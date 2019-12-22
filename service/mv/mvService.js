@@ -1,7 +1,7 @@
 
 var HttpAPI = require('../../utils/http');
 let getAllMVService = async (param, res, req, next) => {
- HttpAPI('', 'get', param, 'c')
+ HttpAPI('/mv/fcgi-bin/getmv_by_tag', 'get', param, 'c')
  .then((response) => {
 	 res.status('200').send(response);
  })

@@ -4,6 +4,7 @@ MVService = require('../../service/mv/mvService');
 
 let getAllMVCtrl = (req, res, next) => {
 	let param = Object.assign({'-': 'recom06556820014060571'}, req.query, commonParams);
+	console.log(param);
 	MVService.GetAllMVService(param, res, req, next);
 }
 

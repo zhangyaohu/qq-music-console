@@ -27,10 +27,9 @@ let HttpAPI = (url, method, options = {}, urlType) => {
 		default:
 		  baseURL = 'https://c.y.qq.com' + url;
 	}
-   console.log(options);
+   console.log(baseURL);
   return axios[method](baseURL, {params: options})
     .then((response) => {
-				console.log('=========' + JSON.stringify(response.data));
         if (!response) {
           throw Error('response is null');
         }

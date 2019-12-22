@@ -7,6 +7,13 @@ let getSongSuggestService = async (param, res, req, next) => {
  })
 }
 
+let getSongSearchService = async (param, res, req, next) => {
+	HttpAPI(`/splcloud/fcgi-bin/${req.params.type}`, 'get', param, 'c')
+	.then((response) => {
+		res.status('200').send(response);
+	})
+ }
 module.exports = {
-	GetSongSuggestService: getSongSuggestService
+	GetSongSuggestService: getSongSuggestService,
+	GetSongSearchService: getSongSearchService
 }
