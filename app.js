@@ -8,6 +8,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var songRouter = require('./routes/song/song');
 var mvRouter = require('./routes/mv/mv');
+var singerRouter = require('./routes/singer/singer');
 
 var app = express();
 //设置跨域访问
@@ -33,6 +34,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/song', songRouter);
 app.use('/mv', mvRouter);
+app.use('/singer', singerRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
