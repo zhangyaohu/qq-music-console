@@ -1,7 +1,11 @@
 const axios  = require('axios');
 axios.defaults.withCredentials = true;
 axios.defaults.timeout = 10000;
-axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded;charset=UTF-8;text/plain;';
+axios.defaults.headers = {
+	post: {
+	 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8;text/plain;'
+	}
+};
 axios.defaults.responseType = 'json;text/plain;charset=utf-8;';
 
 // axios.interceptors.request.use((config) => {
@@ -27,8 +31,21 @@ let HttpAPI = (url, method, options = {}, urlType) => {
 		default:
 		  baseURL = 'https://c.y.qq.com' + url;
 	}
-   console.log(baseURL);
-  return axios[method](baseURL, {params: options})
+	let config = {} 
+	if(urlType === 'c') {
+		config = {
+			params: options,
+			headers: {
+				referer: 'https://c.y.qq.com/',
+				host: 'c.y.qq.com',
+			},
+		}
+	}else {
+		config = {
+			params: options
+		}
+	}
+  return axios[method](baseURL, config)
     .then((response) => {
         if (!response) {
           throw Error('response is null');

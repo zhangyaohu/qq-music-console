@@ -11,4 +11,19 @@ router.get(`/search/:type`, function(req, res, next) {
   return SongController.GetSongSearchListCtrl(req, res, next);
 });
 
+router.get('/detail', function(req, res, next) {
+  return SongController.GetSongDetailListCtrl(req, res, next);
+})
+
+router.get('/collect', function(req, res, next) {
+  return SongController.GetSongCollectCtrl(req, res, next);
+})
+
+router.get('/lyric', function(req, res, next) {
+  return SongController.GetLyricCtrl(req, res, next);
+})
+
+router.get('/info', function(req, res, next) {
+  return SongController.GetLyricInfoCtrl(req, res, next);
+})
 module.exports = router;

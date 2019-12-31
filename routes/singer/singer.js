@@ -7,7 +7,6 @@ router.get('/suggest', function(req, res, next) {
 });
 
 router.get(`/list`, function(req, res, next) {
-  console.log('==============');
   return SingerController.GetSingerListCtrl(req, res, next);
 });
 
