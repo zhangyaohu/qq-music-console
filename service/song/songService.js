@@ -52,6 +52,23 @@ let getLyricInfoService = async (param, res, req, next) => {
 	})
 }
 
+let getPlaySongService = async (param, path, res, req, next) => {
+	HttpAPI(`http://isure.stream.qqmusic.qq.com/${path}`, 'get', param, 's')
+	.then((response) => {
+		res.status('200').send(response);
+	}).catch(err => {
+		next(err);
+	})
+} 
+
+let songVkeyService = async (param, res, req, next) => {
+	HttpAPI(`/base/fcgi-bin/fcg_music_express_mobile3.fcg`, 'get', param, 'c')
+	.then((response) => {
+		res.status('200').send(response);
+	}).catch(err => {
+		next(err);
+	})
+} 
 module.exports = {
 	GetSongSuggestService: getSongSuggestService,
 	GetSongSearchService: getSongSearchService,
@@ -59,4 +76,6 @@ module.exports = {
 	GetSongCollectService: getSongCollectService,
 	GetLyricService: getLyricService,
 	GetLyricInfoService: getLyricInfoService,
+	GetPlaySongService: getPlaySongService,
+	SongVkeyService: songVkeyService
 }

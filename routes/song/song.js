@@ -26,4 +26,13 @@ router.get('/lyric', function(req, res, next) {
 router.get('/info', function(req, res, next) {
   return SongController.GetLyricInfoCtrl(req, res, next);
 })
+
+router.get('/play/:mid', function(req, res, next) {
+  return SongController.GetPlaySongCtrl(req, res, next);
+})
+
+router.get('/vkey', function(req, res, next) {
+  return SongController.GetSongVKeyCtrl(req, res, next);
+})
+
 module.exports = router;
