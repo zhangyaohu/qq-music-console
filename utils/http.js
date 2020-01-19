@@ -28,6 +28,9 @@ let HttpAPI = (url, method, options = {}, urlType) => {
 		case 'u':
 			baseURL = 'https://u.y.qq.com/cgi-bin/musicu.fcg' + url;
 			break;
+		case 's':
+			baseURL = url;
+			break;
 		default:
 		  baseURL = 'https://c.y.qq.com' + url;
 	}
@@ -45,6 +48,7 @@ let HttpAPI = (url, method, options = {}, urlType) => {
 			params: options
 		}
 	}
+	console.log(baseURL);
   return axios[method](baseURL, config)
     .then((response) => {
         if (!response) {

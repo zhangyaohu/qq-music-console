@@ -31,6 +31,17 @@ let getLyricInfoCtrl = (req, res, next) => {
 	let param =  Object.assign({'-': 'getUCGI9466839683664574'}, req.query, commonParams);
 	SongService.GetLyricInfoService(param, res, req, next);
 } 
+
+let getGetPlaySongCtrl = (req, res, next) => {
+	let param = req.query, path = req.params['mid'];
+	console.log(path);
+	SongService.GetPlaySongService(param, path, res, req, next);
+}
+
+let getSongVKeyCtrl = (req, res, next) => {
+	let param = req.query;
+	SongService.SongVkeyService(param, res, req, next);
+}
 module.exports = {
 	GetSongSuggestListCtrl: getSongSuggestListCtrl,
 	GetSongSearchListCtrl: getSongSearchListCtrl,
@@ -38,4 +49,6 @@ module.exports = {
 	GetSongCollectCtrl: getSongCollectCtrl,
 	GetLyricCtrl: getLyricCtrl,
 	GetLyricInfoCtrl: getLyricInfoCtrl,
+	GetPlaySongCtrl: getGetPlaySongCtrl,
+	GetSongVKeyCtrl: getSongVKeyCtrl,
 }
